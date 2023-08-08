@@ -18,3 +18,12 @@ test('Deve inserir marca com sucesso', () => {
     expect(res.body.nome).toBe('Positivo');
   });
 });
+
+test('Nao deve inserir marca sem nome', async () => {
+  const result = await request(app).post('/marcas')
+  .send({ nome: '' })
+  .then((res) => {
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe('Nome é um atributo obrigatório!')
+  });
+});

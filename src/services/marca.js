@@ -4,6 +4,9 @@ module.exports = (app) => {
     };
 
     const save = (marca) => {
+
+    if(!marca.nome) return { error: 'Nome é um atributo obrigatório!'};
+
         return app.db('marca').insert(marca, '*');
     };
 
