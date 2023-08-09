@@ -16,5 +16,17 @@ module.exports = (app) => {
         .insert(marca, '*');
     };
 
-    return { getAll, save, getByName };
+    const update = (id, marca) => {
+        return app.db('marca')
+        .where({ id })
+        .update(marca, '*');
+    };
+
+    const remove = (id) => {
+        return app.db('marca')
+        .where({ id })
+        .del();
+    };
+
+    return { getAll, save, getByName, update, remove };
 };
