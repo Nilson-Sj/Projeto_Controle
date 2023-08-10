@@ -63,8 +63,8 @@ test('Deve remover uma marca', () => {
 test('Nao deve inserir marca sem nome', async () => {
   const result = await request(app).post(MAIN_ROUTE)
     .send({ nome: '' })
-  .then((res) => {
-    expect(res.status).toBe(400);
-    expect(res.body.error).toBe('Nome é um atributo obrigatório!');
+      .then((res) => {
+        expect(res.status).toBe(400);
+        expect(res.body.error).toBe('Nome é um atributo obrigatório!');
   });
 });

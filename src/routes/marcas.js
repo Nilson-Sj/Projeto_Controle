@@ -5,10 +5,13 @@ module.exports = (app) => {
       };
 
     const create = async (req, res) => {
+      try {
       const result = await app.services.marca.save(req.body);
-      if(result.error) return res.status(400).json(result);
-       return res.status(201).json(result[0]);
+      return res.status(201).json(result[0]);
+      } catch (err) {
+        return res.status(400).json({ error: err.message });
       };
+    };
 
       const getByName = (req, res) => {
         app.services.marca.getByName({ nome: req.params.nome})

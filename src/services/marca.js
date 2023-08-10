@@ -1,3 +1,5 @@
+const ValidationError = require('../errors/ValidationError');
+
 module.exports = (app) => {
     const getAll = () => {
         return app.db('marca')
@@ -11,7 +13,7 @@ module.exports = (app) => {
     };
 
     const save = (marca) => {
-    if(!marca.nome) return { error: 'Nome é um atributo obrigatório!'};
+    if(!marca.nome) throw new ValidationError ( 'Nome é um atributo obrigatório!' );
         return app.db('marca')
         .insert(marca, '*');
     };
