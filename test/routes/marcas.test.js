@@ -2,7 +2,7 @@ const request = require('supertest');
 
 const app = require('../../src/app');
 
-const MAIN_ROUTE = '/marcas';
+const MAIN_ROUTE = '/v1/marcas';
 
 let marca;
 
